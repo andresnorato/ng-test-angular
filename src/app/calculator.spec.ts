@@ -48,10 +48,16 @@ describe('Test for Calculator', () => {
 
     expect('123456').toMatch(/123/);
     expect(['apples', 'oranges', 'pears']).toContain('oranges')
-
-
   });
 
+
+  it('#divide should return a null', ()=> {
+    // Arrange
+    const calculator =  new Calculator();
+    //Act and Assert
+    expect(calculator.divide(5,0)).toBeNull();
+    expect(calculator.divide(2,0)).toBeNull();
+  });
 });
 
 
