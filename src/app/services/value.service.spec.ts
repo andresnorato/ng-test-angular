@@ -1,16 +1,20 @@
+import { TestBed } from '@angular/core/testing';
 import { ValueService } from './value.service';
 
 describe('ValueService', () => {
   let service: ValueService;
-
   beforeEach(() => {
-    service = new ValueService();
-  })
 
+    TestBed.configureTestingModule({
+      providers: [ValueService]
+    });
+
+    service = TestBed.inject(ValueService);
+
+  });
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-
 
   describe('Test for getValue', () => {
     it('should return "my value"', () => {
@@ -48,13 +52,13 @@ describe('ValueService', () => {
 
 
   describe('Test for getObservableValue', () => {
-      it('should return "observable value" from observable', (doneFn) => {
-        service.getObservableValue()
+    it('should return "observable value" from observable', (doneFn) => {
+      service.getObservableValue()
         .subscribe(value => {
           expect(value).toBe('observable value');
           doneFn();
         });
-      });
+    });
   })
 
 
